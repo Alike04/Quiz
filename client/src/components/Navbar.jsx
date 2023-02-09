@@ -7,7 +7,7 @@ function BasicExample() {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <LinkContainer to="/quizzes">
+        <LinkContainer to="/">
           <Navbar.Brand>Quizzes</Navbar.Brand>
         </LinkContainer>
         <Nav className="me-auto">

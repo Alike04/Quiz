@@ -45,18 +45,21 @@ const QuizReview = () => {
   const takeBorder = (correct, selected, number) => {
     if (correct == number && selected == number) {
       return "border-success";
-    } else if (correct == number) {
-      return "border-success";
-    } else if (selected == number) {
-      return "border-danger";
     }
-    return "border-secondary";
+    if(correct == number){
+      return "border-success"
+    }
+    if(selected == number){
+      return "border-danger"
+    }
+
+    // return "border-secondary";
   };
 
   const Question = ({ question }) => {
     return (
       <div>
-        <Card.Subtitle>{question.title}</Card.Subtitle>
+        <Card.Subtitle>{question.question}</Card.Subtitle>
         <hr />
         <div className="d-flex flex-column">
           <div
@@ -64,7 +67,7 @@ const QuizReview = () => {
               question.correct,
               question.selected,
               1
-            )} border border-2 rounded p-2 m-1`}
+            )} border border-4 rounded p-2 m-1`}
           >
             {question.option1}
           </div>
@@ -73,8 +76,7 @@ const QuizReview = () => {
               question.correct,
               question.selected,
               2
-            )} "border-success" : ""
-            }border border-2 rounded p-2 m-1`}
+            )} border border-4 rounded p-2 m-1`}
           >
             {question.option2}
           </div>
@@ -83,8 +85,7 @@ const QuizReview = () => {
               question.correct,
               question.selected,
               3
-            )} "border-success" : ""
-            }border border-2 rounded p-2 m-1`}
+            )} border border-4 rounded p-2 m-1`}
           >
             {question.option3}
           </div>
@@ -93,8 +94,7 @@ const QuizReview = () => {
               question.correct,
               question.selected,
               4
-            )} "border-success" : ""
-            }border border-2 rounded p-2 m-1`}
+            )} border border-4 rounded p-2 m-1`}
           >
             {question.option4}
           </div>
@@ -124,9 +124,7 @@ const QuizReview = () => {
               </Button>
               <h4>{`${page + 1}/${questions.length}`}</h4>
               {page === questions.length - 1 ? (
-                <Button onClick={() => navigate("/quizzes")}>
-                  Back to Quizzes
-                </Button>
+                <Button onClick={() => navigate("/")}>Back to Quizzes</Button>
               ) : (
                 <Button onClick={nextPage}>Next</Button>
               )}
